@@ -1,6 +1,12 @@
+import 'package:bouek/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const Bouek());
 }
 
@@ -14,10 +20,12 @@ class Bouek extends StatefulWidget {
 class _BouekState extends State<Bouek> {
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Container(),
+        body: Center(
+          child: Text("WELCOME"),
+        ),
       ),
-    );  
+    );
   }
 }

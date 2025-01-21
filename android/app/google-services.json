@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "323967754756",
+    "project_id": "bouek-ebd45",
+    "storage_bucket": "bouek-ebd45.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323967754756:android:fc51a712ec516b0fce0b51",
+        "android_client_info": {
+          "package_name": "com.example.bouek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323967754756-5s3di4aof9n4phuv83pkhf07ba4m6nfd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaR-73SZJ3OMbnCKNFDY4PuKbNroQx7ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323967754756-5s3di4aof9n4phuv83pkhf07ba4m6nfd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
