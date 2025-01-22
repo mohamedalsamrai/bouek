@@ -1,4 +1,4 @@
-import 'package:bouek/app/presentation/constants/colors.dart';
+import 'package:bouek/app/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
