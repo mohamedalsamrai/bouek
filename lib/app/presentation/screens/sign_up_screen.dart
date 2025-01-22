@@ -29,7 +29,12 @@ class SignUpScreen extends StatelessWidget {
                   const SizedBox(height: 26),
                   const CustomTextFieldWidget(title: 'Confirm Password', subtitle: 'Enter again', isPassword: true),
                   const SizedBox(height: 63),
-                  CustomBlueButton(title: 'Sign Up', onPressed: () {}),
+                  CustomBlueButton(
+                    title: 'Sign Up',
+                    onPressed: () {
+                      // TODO: Implement sign up functionality
+                    },
+                  ),
                   const SizedBox(height: 40),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
@@ -47,7 +52,9 @@ class SignUpScreen extends StatelessWidget {
                     children: [
                       const Text('Already have an account? ', style: TextStyle(fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.w500)),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          // TODO: Implement sign in functionality
+                        },
                         child: const Text('Sign In', style: TextStyle(fontSize: 16, fontFamily: 'Poppins', fontWeight: FontWeight.w500, color: primaryColor)),
                       ),
                     ],
