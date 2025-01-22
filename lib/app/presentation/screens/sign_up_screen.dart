@@ -1,4 +1,5 @@
 import 'package:bouek/app/presentation/constants/colors.dart';
+import 'package:bouek/app/presentation/widgets/custom_blue_button.dart';
 import 'package:bouek/app/presentation/widgets/custom_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -28,14 +29,7 @@ class SignUpScreen extends StatelessWidget {
                   const SizedBox(height: 26),
                   const CustomTextFieldWidget(title: 'Confirm Password', subtitle: 'Enter again', isPassword: true),
                   const SizedBox(height: 63),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(backgroundColor: const Color(0xff065CCB), minimumSize: const Size(double.infinity, 50), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16))),
-                      child: const Text('Sign Up', style: TextStyle(fontSize: 19, fontFamily: 'Poppins', fontWeight: FontWeight.bold, color: Colors.white)),
-                    ),
-                  ),
+                  CustomBlueButton(title: 'Sign Up', onPressed: () {}),
                   const SizedBox(height: 40),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 30.0),
