@@ -3,6 +3,8 @@
         android:label="bouek"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyAZ_1SaMGN2aeth9Ldt1O3P9rEHxgA3Zc0"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"
