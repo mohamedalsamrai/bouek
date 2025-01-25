@@ -41,8 +41,10 @@ class SignUpScreen extends StatelessWidget {
         }
       },
       child: Scaffold(
+        appBar: AppBar(),
         backgroundColor: Colors.white,
         body: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
           child: SizedBox(
             height: MediaQuery.of(context).size.height,
             child: SafeArea(
@@ -141,7 +143,7 @@ class SignUpScreen extends StatelessWidget {
                       fontWeight: FontWeight.w500)),
               TextButton(
                 onPressed: () {
-                  // TODO: Implement sign in functionality
+                  Navigator.pushNamed(context, '/sign_in');
                 },
                 child: const Text('Sign In',
                     style: TextStyle(

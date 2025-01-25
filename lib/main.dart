@@ -1,5 +1,7 @@
 import 'package:bouek/app/presentation/cubits/registration/registration_cubit.dart';
+import 'package:bouek/app/presentation/screens/sign_in_screen.dart';
 import 'package:bouek/app/presentation/screens/sign_up_screen.dart';
+import 'package:bouek/app/utils/constants/app_theme.dart';
 import 'package:bouek/data/repositories/auth_repository_impl.dart';
 import 'package:bouek/domain/usecases/check_email_verification.dart';
 import 'package:bouek/domain/usecases/register_user.dart';
@@ -55,12 +57,14 @@ class Bouek extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
+        theme: kthemeData,
         title: 'Bouek',
         initialRoute: '/sign_up',
         debugShowCheckedModeBanner: false,
         routes: {
           '/sign_up': (context) => SignUpScreen(),
           '/home': (context) => const HomeScreen(),
+          '/sign_in': (context) => const SignInScreen(),
         },
       ),
     );
