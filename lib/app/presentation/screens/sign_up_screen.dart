@@ -20,10 +20,11 @@ class SignUpScreen extends StatelessWidget {
     return BlocListener<RegistrationCubit, RegistrationState>(
       listener: (context, state) {
         if (state is RegistrationSuccess) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text('Verification email sent.')),
+          //show email verification dialog
+          showDialog(
+            context: context,
+            builder: (context) => emailVerificationDialog(context),
           );
-          _showVerifyEmailDialog(context);
         } else if (state is RegistrationFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.errorMessage)),
@@ -115,9 +116,6 @@ class SignUpScreen extends StatelessWidget {
                 final email = emailController.text;
                 final password = passwordController.text;
                 context.read<RegistrationCubit>().register(email, password);
-
-                //show email verification dialog
-                _showVerifyEmailDialog(context);
               }
             },
           ),
@@ -160,67 +158,62 @@ class SignUpScreen extends StatelessWidget {
   }
 
   // Function to show the "Verify Email" dialog
-  void _showVerifyEmailDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          insetPadding: const EdgeInsets.all(20),
-          alignment: Alignment.center,
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15),
-          ),
-          child: Container(
-            width: double.infinity,
-            height: 350,
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SvgPicture.asset('assets/icons/email.svg'),
-                const SizedBox(height: 25),
-                const Text(
-                  'Verify e-mail address',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w700,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  'Please verify your email address. A verification link has been sent to your email. Click on the link to complete the verification process.',
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black,
-                  ),
-                ),
-                const SizedBox(height: 20),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text(
-                    'Close',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      color: primaryColor,
-                    ),
-                  ),
-                ),
-              ],
+  Widget emailVerificationDialog(BuildContext cx) {
+    return Dialog(
+      insetPadding: const EdgeInsets.all(20),
+      alignment: Alignment.center,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Container(
+        width: double.infinity,
+        height: 350,
+        padding: const EdgeInsets.symmetric(horizontal: 25),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SvgPicture.asset('assets/icons/email.svg'),
+            const SizedBox(height: 25),
+            const Text(
+              'Verify e-mail address',
+              style: TextStyle(
+                fontSize: 20,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w700,
+                color: Colors.black,
+              ),
             ),
-          ),
-        );
-      },
+            const SizedBox(height: 20),
+            const Text(
+              'Please verify your email address. A verification link has been sent to your email. Click on the link to complete the verification process.',
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                fontSize: 12,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextButton(
+              onPressed: () {
+                Navigator.of(cx).pop();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                  color: primaryColor,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
