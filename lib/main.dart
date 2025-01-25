@@ -1,3 +1,4 @@
+import 'package:bouek/app/presentation/screens/sign_in_screen.dart';
 import 'package:bouek/app/presentation/screens/sign_up_screen.dart';
 import 'package:bouek/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -22,11 +23,13 @@ class _BouekState extends State<Bouek> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Bouek',
-      initialRoute: '/sign_up',
+      initialRoute: '/sign_in',
       routes: {
         // '/': (context) => const Bouek(),
         '/sign_up': (context) => const SignUpScreen(),
+        '/sign_in': (context) => const SignInScreen()
       },
     );
   }
