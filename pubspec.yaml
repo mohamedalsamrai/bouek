@@ -40,6 +40,7 @@ dependencies:
   flutter_svg: ^2.0.17
   flutter_bloc: ^9.0.0
   equatable: ^2.0.7
+  google_maps_flutter: ^2.10.0
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +68,7 @@ flutter:
   assets:
     # - assets/images/
     - assets/icons/
+    - .env
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
