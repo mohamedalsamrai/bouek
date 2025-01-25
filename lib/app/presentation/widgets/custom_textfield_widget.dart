@@ -8,6 +8,7 @@ class CustomTextFieldWidget extends StatefulWidget {
     required this.title,
     required this.subtitle,
     required this.isPassword,
+    this.validator,
     this.controller,
   });
 
@@ -15,6 +16,7 @@ class CustomTextFieldWidget extends StatefulWidget {
   final String subtitle;
   final bool isPassword;
   final TextEditingController? controller;
+  final String? Function(String?)? validator;
 
   @override
   State<CustomTextFieldWidget> createState() => _CustomTextFieldWidgetState();
@@ -30,7 +32,8 @@ class _CustomTextFieldWidgetState extends State<CustomTextFieldWidget> {
       children: [
         Text(widget.title, style: const TextStyle(fontSize: 15, fontFamily: 'Poppins', fontWeight: FontWeight.w500)),
         const SizedBox(height: 10),
-        TextField(
+        TextFormField(
+          validator: widget.validator,
           controller: widget.controller,
           cursorColor: primaryColor,
           obscureText: !_isPasswordVisible && widget.isPassword,
