@@ -16,6 +16,9 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarOpacity: 0,
+      ),
       body: SafeArea(
         child: SizedBox(
           height: MediaQuery.of(context).size.height,
@@ -27,32 +30,32 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Container(
                           margin: const EdgeInsets.only(top: 50),
                           child: SvgPicture.asset("assets/icons/logo.svg")),
                       const SizedBox(
-                        height: 10,
+                        height: 20,
                       ),
                       const Text('Bouek',
                           style: TextStyle(
                               fontSize: 24,
                               fontFamily: 'Poppins',
                               fontWeight: FontWeight.w600)),
-                      const Spacer(),
                       const CustomTextFieldWidget(
                           title: "Email",
                           subtitle: "Enter email",
                           isPassword: false),
                       const SizedBox(
-                        height: 30,
+                        height: 42,
                       ),
                       const CustomTextFieldWidget(
                           title: "Password",
                           subtitle: "Enter password",
                           isPassword: true),
                       const SizedBox(
-                        height: 20,
+                        height: 25,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -83,13 +86,14 @@ class _SignInScreenState extends State<SignInScreen> {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 62,
                       ),
-                      const CustomBlueButton(
+                      CustomBlueButton(
+                        onPressed: () {},
                         title: "Sign In",
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 40,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -114,9 +118,9 @@ class _SignInScreenState extends State<SignInScreen> {
                                   fontWeight: FontWeight.w500)),
                           TextButton(
                             onPressed: () {
-                              // TODO: Implement sign in functionality
+                              Navigator.pushNamed(context, '/sign_up');
                             },
-                            child: const Text('Sign In',
+                            child: const Text('Sign Up',
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontFamily: 'Poppins',
@@ -125,9 +129,6 @@ class _SignInScreenState extends State<SignInScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 25,
-                      )
                     ],
                   ),
                 ),
