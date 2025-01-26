@@ -1,5 +1,4 @@
 import 'package:bouek/app/services/auth_services.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:bouek/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl extends AuthRepository {

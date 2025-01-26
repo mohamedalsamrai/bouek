@@ -17,7 +17,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(Bouek());
+  runApp(const Bouek());
 }
 
 class Bouek extends StatelessWidget {

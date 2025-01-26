@@ -114,14 +114,14 @@ class SignInForm extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is Logining) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(
                       color: Color(0xffffffff),
                     ),
                   );
                 }
-                return Text('Sign In',
-                    style: const TextStyle(
+                return const Text('Sign In',
+                    style: TextStyle(
                         fontSize: 19,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold,

@@ -81,7 +81,7 @@ class SignUpForm extends StatelessWidget {
           //show email verification dialog
           showDialog(
             context: context,
-            builder: (context) => EmailVerificationDialog(),
+            builder: (context) => const EmailVerificationDialog(),
           );
         } else if (state is RegistrationFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -91,14 +91,14 @@ class SignUpForm extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is RegistrationLoading) {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(
                       color: Color(0xffffffff),
                     ),
                   );
                 }
-                return Text('Sign In',
-                    style: const TextStyle(
+                return const Text('Sign In',
+                    style: TextStyle(
                         fontSize: 19,
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold,
