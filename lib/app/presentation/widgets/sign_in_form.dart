@@ -1,8 +1,11 @@
+import 'package:bouek/app/presentation/di/locator_di.dart';
 import 'package:bouek/app/presentation/providers/login/login_cubit.dart';
 import 'package:bouek/app/presentation/widgets/checkbox.dart';
 import 'package:bouek/app/presentation/widgets/custom_blue_button.dart';
 import 'package:bouek/app/presentation/widgets/custom_textfield_widget.dart';
 import 'package:bouek/app/utils/constants/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -109,7 +112,13 @@ class SignInForm extends StatelessWidget {
                   ScaffoldMessenger.of(context)
                       .showSnackBar(SnackBar(content: Text(state.message)));
                 } else if (state is LoginSuccess) {
-                  Navigator.pushReplacementNamed(context, '/home');
+                  if (state.isVariftEmail)
+                    Navigator.pushReplacementNamed(context, '/home');
+                  else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Please Verify your account")));
+                    s1<FirebaseAuth>().currentUser!.sendEmailVerification();
+                  }
                 }
               },
               builder: (context, state) {

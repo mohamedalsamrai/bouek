@@ -12,8 +12,9 @@ final class Logining extends LoginState {
   const Logining();
 }
 
-final class LoginSuccess  extends LoginState{
-  const LoginSuccess();
+final class LoginSuccess extends LoginState {
+  const LoginSuccess(this.isVariftEmail);
+ final bool isVariftEmail;
 }
 
 final class LoginErorr extends LoginState {
