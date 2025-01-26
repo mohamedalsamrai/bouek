@@ -1,11 +1,15 @@
 import 'package:bouek/app/services/auth_services.dart';
-import 'package:bouek/domain/repositories/auth_repository.dart';
 
-class AuthRepositoryImpl extends AuthRepository {
+abstract class AuthDatasources {
+  Future<void> loginUser({required String email, required String password});
+  Future<void> registerUser(String email, String password);
+  Future<void> sendEmailVerification();
+  Future<bool> isEmailVerified();
+}
+
+class AuthDatasourcesImpl extends AuthDatasources {
   final AuthServices authServices;
-
-  AuthRepositoryImpl(this.authServices);
-
+  AuthDatasourcesImpl(this.authServices);
   @override
   Future<void> loginUser(
       {required String email, required String password}) async {

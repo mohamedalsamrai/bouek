@@ -1,13 +1,10 @@
-import 'package:bouek/app/presentation/cubits/registration/registration_cubit.dart';
+import 'package:bouek/app/presentation/providers/registration/registration_cubit.dart';
+import 'package:bouek/app/presentation/di/locator_di.dart';
+import 'package:bouek/app/presentation/providers/login/login_cubit.dart';
 import 'package:bouek/app/presentation/screens/sign_in_screen.dart';
 import 'package:bouek/app/presentation/screens/sign_up_screen.dart';
 import 'package:bouek/app/utils/constants/app_theme.dart';
-import 'package:bouek/data/repositories/auth_repository_impl.dart';
-import 'package:bouek/domain/usecases/check_email_verification.dart';
-import 'package:bouek/domain/usecases/register_user.dart';
-import 'package:bouek/domain/usecases/send_email_verification.dart';
 import 'package:bouek/firebase_options.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,33 +12,17 @@ import 'app/presentation/screens/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await inite();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  // Create instances
-  final authRepository = AuthRepositoryImpl(FirebaseAuth.instance);
-  final registerUserUseCase = RegisterUser(authRepository);
-  final sendEmailVerificationUseCase = SendEmailVerification(authRepository);
-  final checkEmailVerificationUseCase = CheckEmailVerification(authRepository);
-
-  runApp(Bouek(
-    registerUserUseCase: registerUserUseCase,
-    sendEmailVerificationUseCase: sendEmailVerificationUseCase,
-    checkEmailVerificationUseCase: checkEmailVerificationUseCase,
-  ));
+  runApp(const Bouek());
 }
 
 class Bouek extends StatelessWidget {
-  final RegisterUser registerUserUseCase;
-  final SendEmailVerification sendEmailVerificationUseCase;
-  final CheckEmailVerification checkEmailVerificationUseCase;
-
   const Bouek({
     super.key,
-    required this.registerUserUseCase,
-    required this.sendEmailVerificationUseCase,
-    required this.checkEmailVerificationUseCase,
   });
 
   @override
@@ -49,12 +30,9 @@ class Bouek extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => RegistrationCubit(
-            registerUser: registerUserUseCase,
-            sendEmailVerification: sendEmailVerificationUseCase,
-            checkEmailVerification: checkEmailVerificationUseCase,
-          ),
+          create: (context) => s1<RegistrationCubit>(),
         ),
+        BlocProvider(create: (context) => s1<LoginCubit>())
       ],
       child: MaterialApp(
         theme: kthemeData,
