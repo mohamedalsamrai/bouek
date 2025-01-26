@@ -41,6 +41,7 @@ dependencies:
   flutter_bloc: ^9.0.0
   equatable: ^2.0.7
   google_maps_flutter: ^2.10.0
+  get_it: ^8.0.3
 
 dev_dependencies:
   flutter_test:

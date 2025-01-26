@@ -7,7 +7,7 @@ class CustomBlueButton extends StatelessWidget {
     this.onPressed,
   });
 
-  final String title;
+  final Widget title;
   final void Function()? onPressed;
 
   @override
@@ -22,7 +22,7 @@ class CustomBlueButton extends StatelessWidget {
         ),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
-      child: Text(title, style: const TextStyle(fontSize: 19, fontFamily: 'Poppins', fontWeight: FontWeight.bold, color: Colors.white)),
+      child: title
     );
   }
 }
