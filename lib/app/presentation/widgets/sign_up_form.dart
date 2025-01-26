@@ -97,7 +97,7 @@ class SignUpForm extends StatelessWidget {
                     ),
                   );
                 }
-                return const Text('Sign In',
+                return const Text('Sign Up',
                     style: TextStyle(
                         fontSize: 19,
                         fontFamily: 'Poppins',
