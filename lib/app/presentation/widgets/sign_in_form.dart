@@ -113,7 +113,7 @@ class SignInForm extends StatelessWidget {
                       .showSnackBar(SnackBar(content: Text(state.message)));
                 } else if (state is LoginSuccess) {
                   if (state.isVariftEmail)
-                    Navigator.pushReplacementNamed(context, '/home');
+                    Navigator.pushReplacementNamed(context, '/menu_tab_bar');
                   else {
                     ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Please Verify your account")));
