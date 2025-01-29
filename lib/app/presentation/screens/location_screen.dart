@@ -87,8 +87,18 @@ class _LocationScreenState extends State<LocationScreen> {
         accuracy: LocationAccuracy.high,
       ),
     );
+
+    changeLocation(LatLng(position.latitude, position.longitude));
+
+    await _mapController.animateCamera(CameraUpdate.newLatLngZoom(currentLocation!, 15));
     setState(() {
-      currentLocation = LatLng(position.latitude, position.longitude);
+      count = 1;
+    });
+  }
+
+  void changeLocation(LatLng argument) {
+    setState(() {
+      currentLocation = argument;
       _markers.clear(); // Remove old marker
       _markers.add(
         Marker(
@@ -98,11 +108,6 @@ class _LocationScreenState extends State<LocationScreen> {
           infoWindow: const InfoWindow(title: "You are here"),
         ),
       );
-    });
-
-    await _mapController.animateCamera(CameraUpdate.newLatLngZoom(currentLocation!, 15));
-    setState(() {
-      count = 1;
     });
   }
 
@@ -128,6 +133,7 @@ class _LocationScreenState extends State<LocationScreen> {
               target: _center,
               zoom: 11.0,
             ),
+            onTap: changeLocation,
             onCameraMoveStarted: () {
               if (count != 1) {
                 setState(() {
