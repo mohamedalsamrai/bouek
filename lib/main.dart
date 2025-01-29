@@ -1,6 +1,7 @@
 import 'package:bouek/app/presentation/providers/registration/registration_cubit.dart';
 import 'package:bouek/app/presentation/di/locator_di.dart';
 import 'package:bouek/app/presentation/providers/login/login_cubit.dart';
+import 'package:bouek/app/presentation/screens/location_screen.dart';
 import 'package:bouek/app/presentation/screens/sign_in_screen.dart';
 import 'package:bouek/app/presentation/screens/sign_up_screen.dart';
 import 'package:bouek/app/utils/constants/app_theme.dart';
@@ -46,6 +47,7 @@ class Bouek extends StatelessWidget {
           '/sign_up': (context) => const SignUpScreen(),
           '/home': (context) => const HomeScreen(),
           '/sign_in': (context) => const SignInScreen(),
+          '/location': (context) => const LocationScreen(),
         },
       ),
     );
