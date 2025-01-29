@@ -32,10 +32,10 @@ class _MenuTabBarState extends State<MenuTabBar>
     "assets/icons/profile.svg",
   ];
   final List<String> namesIcons = [
-    "home",
-    "like",
-    "search",
-    "profile",
+    "Home",
+    "Like",
+    "Search",
+    "Profile",
   ];
 
   @override
@@ -44,12 +44,12 @@ class _MenuTabBarState extends State<MenuTabBar>
     tabController = TabController(length: pages.length, vsync: this);
   }
 
-  Widget biuldIcon(String iconPath, bool isSelct) {
+  Widget buildIcon(String iconPath, bool isSelct) {
     return SvgPicture.asset(
       iconPath,
       width: 34,
       height: 34,
-      color: isSelct ? primaryColor : Color(0xffAEAEB4),
+      color: isSelct ? primaryColor : const Color(0xffAEAEB4),
     );
   }
 
@@ -57,7 +57,8 @@ class _MenuTabBarState extends State<MenuTabBar>
     return List.generate(
       pages.length,
       (index) => NavigationDestination(
-          icon: biuldIcon(icons[index], selectedIndex == index), label: namesIcons[index]),
+          icon: buildIcon(icons[index], selectedIndex == index),
+          label: namesIcons[index]),
     );
   }
 
@@ -78,10 +79,9 @@ class _MenuTabBarState extends State<MenuTabBar>
         },
         selectedIndex: selectedIndex,
         height: 71,
-        indicatorColor: Color(0xffffffff),
-        backgroundColor: Color(0xffffffff),
+        indicatorColor: const Color(0xffffffff),
+        backgroundColor: const Color(0xffffffff),
         destinations: pagesMenu(),
-        
       ),
     );
   }
