@@ -60,7 +60,7 @@ class HomeScreen extends StatelessWidget {
                           location: '4 rue de Valois',
                           rating: '4.50',
                         ),
-                        const SizedBox(height: 12), // Space between each card
+                        const SizedBox(height: 20), // Space between each card
                       ],
                     );
                   },
