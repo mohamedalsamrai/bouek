@@ -5,7 +5,6 @@ ThemeData kthemeData = ThemeData(
   appBarTheme: const AppBarTheme(
     color: Color(0xffffffff),
     surfaceTintColor: Color(0xffffffff),
-    toolbarHeight: 0,
   ),
   scaffoldBackgroundColor: const Color(0xffffffff),
   primaryColor: primaryColor,
