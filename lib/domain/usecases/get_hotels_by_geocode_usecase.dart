@@ -7,6 +7,6 @@ class GetHotelsByGeocodeUsecase {
   GetHotelsByGeocodeUsecase(this._hotelRepository);
 
   Future<List<Hotel>> call(double latitude, double longitude) async {
-    return _hotelRepository.getHotelsByGeocode(latitude: latitude, longitude: longitude);
+    return _hotelRepository.getHotelsByGeocode(latitude, longitude);
   }
 }

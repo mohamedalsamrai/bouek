@@ -7,6 +7,6 @@ class GetHotelsByCitycodeUsecase {
   GetHotelsByCitycodeUsecase(this._hotelRepository);
 
   Future<List<Hotel>> call(String cityCode) async {
-    return _hotelRepository.getHotelsByCityCode(cityCode: cityCode);
+    return _hotelRepository.getHotelsByCityCode(cityCode);
   }
 }

@@ -1,0 +1,110 @@
+{
+  "businesses": [
+    {
+      "id": "6tXkeZlisxTtdUsjDaTqaw",
+      "alias": "chiltern-firehouse-london",
+      "name": "Chiltern Firehouse",
+      "image_url": "https://s3-media2.fl.yelpcdn.com/bphoto/58u7lwgpHV2IpKEsxFTxBw/o.jpg",
+      "is_closed": false,
+      "url": "https://www.yelp.com/biz/chiltern-firehouse-london?adjust_creative=f9WUqWvBHH1tLeGKWkgUFQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=f9WUqWvBHH1tLeGKWkgUFQ",
+      "review_count": 190,
+      "categories": [
+        {
+          "alias": "restaurants",
+          "title": "Restaurants"
+        },
+        {
+          "alias": "hotels",
+          "title": "Hotels"
+        }
+      ],
+      "rating": 4.0,
+      "coordinates": {
+        "latitude": 51.5187121017659,
+        "longitude": -0.154846859653053
+      },
+      "transactions": [],
+      "price": "££££",
+      "location": {
+        "address1": "1 Chiltern Street",
+        "address2": "",
+        "address3": "",
+        "city": "London",
+        "zip_code": "W1U 7PA",
+        "country": "GB",
+        "state": "XGL",
+        "display_address": [
+          "1 Chiltern Street",
+          "London W1U 7PA",
+          "United Kingdom"
+        ]
+      },
+      "phone": "+442070737676",
+      "display_phone": "+44 20 7073 7676",
+      "distance": 12601.174171579038,
+      "business_hours": [
+        {
+          "open": [
+            {
+              "is_overnight": true,
+              "start": "0000",
+              "end": "0000",
+              "day": 0
+            },
+            {
+              "is_overnight": true,
+              "start": "0000",
+              "end": "0000",
+              "day": 1
+            },
+            {
+              "is_overnight": true,
+              "start": "0000",
+              "end": "0000",
+              "day": 2
+            },
+            {
+              "is_overnight": true,
+              "start": "0000",
+              "end": "0000",
+              "day": 3
+            },
+            {
+              "is_overnight": true,
+              "start": "0000",
+              "end": "0000",
+              "day": 4
+            },
+            {
+              "is_overnight": true,
+              "start": "0000",
+              "end": "0000",
+              "day": 5
+            },
+            {
+              "is_overnight": true,
+              "start": "0000",
+              "end": "0000",
+              "day": 6
+            }
+          ],
+          "hours_type": "REGULAR",
+          "is_open_now": true
+        }
+      ],
+      "attributes": {
+        "business_temp_closed": null,
+        "menu_url": "http://stnd-firehouse-prod.s3.amazonaws.com/documents/pdfs/000/000/008/original.pdf?1423051935",
+        "open24_hours": null,
+        "waitlist_reservation": true
+      }
+    }
+  ],
+  "total": 4200,
+  "region": {
+    "center": {
+      "longitude": 0.026460000000000004,
+      "latitude": 51.50816
+    }
+  }
+}

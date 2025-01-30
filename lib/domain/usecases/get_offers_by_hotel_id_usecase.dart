@@ -7,6 +7,6 @@ class GetOffersByHotelIdUsecase {
   GetOffersByHotelIdUsecase(this._offerRepository);
 
   Future<List<Offer>> call(String hotelId) {
-    return _offerRepository.getOffersByHotelID(hotelID: hotelId);
+    return _offerRepository.getOffersByHotelID(hotelId);
   }
 }
