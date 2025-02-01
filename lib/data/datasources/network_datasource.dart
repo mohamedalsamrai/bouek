@@ -1,6 +1,9 @@
+import 'package:bouek/app/services/api_sevices.dart';
+import 'package:bouek/data/models/seniments_dto_model.dart';
 import 'package:bouek/domain/models/hotel_model.dart';
 import 'package:bouek/domain/models/offer_model.dart';
 import 'package:bouek/domain/models/sentiments_model.dart';
+import 'package:dio/dio.dart';
 
 abstract class NetworkDatasource {
   Future<List<Hotel>> getHotelsByGeocode(double latitude, double longitude);
@@ -13,6 +16,8 @@ abstract class NetworkDatasource {
 }
 
 class NetworkDatasourceImpl extends NetworkDatasource {
+  final ApiSevices api;
+  NetworkDatasourceImpl(this.api);
   @override
   Future<Hotel> getHotelByHotelId(String hotelId) {
     // TODO: implement getHotelByHotelId
@@ -38,8 +43,8 @@ class NetworkDatasourceImpl extends NetworkDatasource {
   }
 
   @override
-  Future<Sentiments> getSentimentsByHotelId(String hotelId) {
-    // TODO: implement getSentimentsByHotelId
-    throw UnimplementedError();
+  Future<Sentiments> getSentimentsByHotelId(String hotelId) async {
+    final Response response = await api.getSentimentsByHotelId(hotelId);
+    return SenimentsDtoModel.fromJson(response.data).toDomainModel();
   }
 }

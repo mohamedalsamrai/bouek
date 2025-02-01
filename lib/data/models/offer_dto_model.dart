@@ -4,7 +4,6 @@ import 'package:bouek/data/models/policies_dto_model.dart';
 import 'package:bouek/data/models/price_dto_model.dart';
 import 'package:bouek/data/models/room_dto_model.dart';
 import 'package:bouek/domain/models/offer_model.dart';
-import 'package:bouek/domain/models/policies_model.dart';
 
 class OfferDtoModel extends Offer {
   OfferDtoModel(super.id, super.checkInDate, super.checkOutDate, super.rateCode,
