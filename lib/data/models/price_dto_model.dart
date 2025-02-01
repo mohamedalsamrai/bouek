@@ -1,33 +1,54 @@
-import 'package:bouek/data/models/variations_dto_model.dart';
+import 'dart:convert';
+
 import 'package:bouek/domain/models/price_model.dart';
 
-class PriceDtoModel {
-  String? currency;
-  String? base;
-  String? total;
-  VariationsDtoModel? variations;
-
-  PriceDtoModel({this.currency, this.base, this.total, this.variations});
-
-  PriceDtoModel.fromJson(Map<String, dynamic> json) {
-    currency = json['currency'];
-    base = json['base'];
-    total = json['total'];
-    variations = json['variations'] != null
-        ? VariationsDtoModel.fromJson(json['variations'])
-        : null;
+class PriceDtoModel extends Price {
+  PriceDtoModel(super.currency, super.base, super.total);
+ PriceDtoModel copyWith({
+    String? currency,
+    String? base,
+    String? total,
+  }) {
+    return PriceDtoModel(
+      currency ?? this.currency,
+      base ?? this.base,
+      total ?? this.total,
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['currency'] = currency;
-    data['base'] = base;
-    data['total'] = total;
-    if (variations != null) {
-      data['variations'] = variations!.toJson();
-    }
-    return data;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'currency': currency,
+      'base': base,
+      'total': total,
+    };
   }
 
-  Price toDomainModel() => Price(currency ?? '', base ?? '', total ?? '');
+  factory PriceDtoModel.fromMap(Map<String, dynamic> map) {
+    return PriceDtoModel(
+      map['currency'] as String,
+      map['base'] as String,
+      map['total'] as String,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory PriceDtoModel.fromJson(String source) => PriceDtoModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() => 'PriceDtoModel(currency: $currency, base: $base, total: $total)';
+
+  @override
+  bool operator ==(covariant PriceDtoModel other) {
+    if (identical(this, other)) return true;
+  
+    return 
+      other.currency == currency &&
+      other.base == base &&
+      other.total == total;
+  }
+
+  @override
+  int get hashCode => currency.hashCode ^ base.hashCode ^ total.hashCode;
 }

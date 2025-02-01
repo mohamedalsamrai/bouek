@@ -1,41 +1,73 @@
-import 'package:bouek/data/models/description_dto_model.dart';
-import 'package:bouek/data/models/type_estimated_dto_model.dart';
+import 'dart:convert';
+
 import 'package:bouek/domain/models/room_model.dart';
 
-class RoomDtoModel {
-  String? type;
-  TypeEstimatedDtoModel? typeEstimated;
-  DescriptionDtoModel? description;
-
-  RoomDtoModel({this.type, this.typeEstimated, this.description});
-
-  RoomDtoModel.fromJson(Map<String, dynamic> json) {
-    type = json['type'];
-    typeEstimated = json['typeEstimated'] != null
-      ? TypeEstimatedDtoModel.fromJson(json['typeEstimated'])
-      : null;
-    description = json['description'] != null
-      ? DescriptionDtoModel.fromJson(json['description'])
-      : null;
+class RoomDtoModel extends Room {
+  RoomDtoModel(
+      super.type, super.category, super.beds, super.bedType, super.description);
+  RoomDtoModel copyWith({
+    String? type,
+    String? category,
+    int? beds,
+    String? bedType,
+    String? description,
+  }) {
+    return RoomDtoModel(
+      type ?? this.type,
+      category ?? this.category,
+      beds ?? this.beds,
+      bedType ?? this.bedType,
+      description ?? this.description,
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['type'] = type;
-    if (typeEstimated != null) {
-      data['typeEstimated'] = typeEstimated!.toJson();
-    }
-    if (description != null) {
-      data['description'] = description!.toJson();
-    }
-    return data;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'type': type,
+      'category': category,
+      'beds': beds,
+      'bedType': bedType,
+      'description': description,
+    };
   }
 
-  Room toDomainModel() => Room(
-    type ?? '',
-    typeEstimated?.category ?? '',
-    typeEstimated?.beds ?? 0,
-    typeEstimated?.bedType ?? '',
-    description?.text ?? ''
-  );
+  factory RoomDtoModel.fromMap(Map<String, dynamic> map) {
+    return RoomDtoModel(
+      map['type'] as String,
+      map['category'] as String,
+      map['beds'] as int,
+      map['bedType'] as String,
+      map['description'] as String,
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory RoomDtoModel.fromJson(String source) =>
+      RoomDtoModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'RoomDtoModel(type: $type, category: $category, beds: $beds, bedType: $bedType, description: $description)';
+  }
+
+  @override
+  bool operator ==(covariant RoomDtoModel other) {
+    if (identical(this, other)) return true;
+
+    return other.type == type &&
+        other.category == category &&
+        other.beds == beds &&
+        other.bedType == bedType &&
+        other.description == description;
+  }
+
+  @override
+  int get hashCode {
+    return type.hashCode ^
+        category.hashCode ^
+        beds.hashCode ^
+        bedType.hashCode ^
+        description.hashCode;
+  }
 }
