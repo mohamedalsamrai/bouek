@@ -22,7 +22,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       leadingWidth: 80,
       leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pushNamed(context, "/location");
+          },
           icon: SvgPicture.asset(
             'assets/icons/$leadingIcon.svg',
             width: 36,

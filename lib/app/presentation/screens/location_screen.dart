@@ -32,7 +32,8 @@ class _LocationScreenState extends State<LocationScreen> {
       context: context,
       builder: (context) => AlertDialog(
         title: const Text("Location Permission Needed"),
-        content: const Text("This app requires location access to show your position."),
+        content: const Text(
+            "This app requires location access to show your position."),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context), // Close dialog
@@ -90,7 +91,8 @@ class _LocationScreenState extends State<LocationScreen> {
 
     changeLocation(LatLng(position.latitude, position.longitude));
 
-    await _mapController.animateCamera(CameraUpdate.newLatLngZoom(currentLocation!, 15));
+    await _mapController
+        .animateCamera(CameraUpdate.newLatLngZoom(currentLocation!, 15));
     setState(() {
       count = 1;
     });
@@ -104,7 +106,8 @@ class _LocationScreenState extends State<LocationScreen> {
         Marker(
           markerId: const MarkerId("currentLocation"),
           position: currentLocation!,
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed), // Blue marker
+          icon: BitmapDescriptor.defaultMarkerWithHue(
+              BitmapDescriptor.hueRed), // Blue marker
           infoWindow: const InfoWindow(title: "You are here"),
         ),
       );
@@ -120,7 +123,9 @@ class _LocationScreenState extends State<LocationScreen> {
         backgroundColor: Colors.white,
         shape: const CircleBorder(),
         child: Icon(
-          currentLocation == null ? Icons.location_searching : Icons.my_location,
+          currentLocation == null
+              ? Icons.location_searching
+              : Icons.my_location,
           color: Colors.black,
         ),
       ),
@@ -149,12 +154,15 @@ class _LocationScreenState extends State<LocationScreen> {
           ),
           SafeArea(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 17.0, vertical: 10),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 17.0, vertical: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     style: IconButton.styleFrom(
                       backgroundColor: Colors.white,
                       minimumSize: const Size(34, 34),
@@ -177,7 +185,8 @@ class _LocationScreenState extends State<LocationScreen> {
                           horizontal: 20,
                         ),
                         decoration: BoxDecoration(
-                          color: Colors.blue.withValues(alpha: 0.1), // Semi-transparent blue
+                          color: Colors.blue
+                              .withOpacity(0.1), // Semi-transparent blue
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: const Text(

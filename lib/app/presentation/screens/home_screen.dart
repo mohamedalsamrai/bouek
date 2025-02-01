@@ -32,6 +32,7 @@ class HomeScreen extends StatelessWidget {
           trailingIcon: 'notifications',
         ),
         body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(

@@ -41,9 +41,12 @@ Widget hotelCard({
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Image.asset(
-                'assets/images/hotelimg.png',
-                fit: BoxFit.contain,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.asset(
+                  'assets/images/la-gaffe.jpg',
+                  fit: BoxFit.fill,
+                ),
               ),
             ),
             const SizedBox(
@@ -97,7 +100,6 @@ Widget hotelCard({
                   width: 126,
                   height: 22,
                   child: Row(
-                    spacing: 4,
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
@@ -110,6 +112,7 @@ Widget hotelCard({
                           // color: primaryColor,
                         ),
                       ),
+                      SizedBox(width: 4),
                       Text(
                         location,
                         style: const TextStyle(
@@ -128,7 +131,6 @@ Widget hotelCard({
                   width: 55,
                   height: 22,
                   child: Row(
-                    spacing: 4,
                     // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       SizedBox(
@@ -141,6 +143,7 @@ Widget hotelCard({
                           // color: primaryColor,
                         ),
                       ),
+                      SizedBox(width: 4),
                       Text(
                         rating,
                         style: const TextStyle(
