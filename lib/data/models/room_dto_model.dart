@@ -34,10 +34,10 @@ class RoomDtoModel extends Room {
   factory RoomDtoModel.fromMap(Map<String, dynamic> map) {
     return RoomDtoModel(
       map['type'] as String,
-      map['category'] as String,
-      map['beds'] as int,
-      map['bedType'] as String,
-      map['description'] as String,
+      map['typeEstimated']['category'] as String,
+      map['typeEstimated']['beds'] as int,
+      map['typeEstimated']['bedType'] as String,
+      map['description']['text'] as String,
     );
   }
 

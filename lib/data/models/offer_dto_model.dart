@@ -9,28 +9,17 @@ class OfferDtoModel extends Offer {
   OfferDtoModel(super.id, super.checkInDate, super.checkOutDate, super.rateCode,
       super.rateType, super.room, super.adults, super.price, super.policies);
 
-  OfferDtoModel copyWith({
-    String? id,
-    String? checkInDate,
-    String? checkOutDate,
-    String? rateCode,
-    String? rateType,
-    RoomDtoModel? room,
-    int? adults,
-    PriceDtoModel? price,
-    PoliciesDtoModel? policies,
-  }) {
-    return OfferDtoModel(
-      id ?? this.id,
-      checkInDate ?? this.checkInDate,
-      checkOutDate ?? this.checkOutDate,
-      rateCode ?? this.rateCode,
-      rateType ?? this.rateType,
-      room ?? this.room,
-      adults ?? this.adults,
-      price ?? this.price,
-      policies ?? this.policies,
-    );
+  Offer toDomainModel() {
+    return Offer(
+        super.id,
+        super.checkInDate,
+        super.checkOutDate,
+        super.rateCode,
+        super.rateType,
+        super.room,
+        super.adults,
+        super.price,
+        super.policies);
   }
 
   Map<String, dynamic> toMap() {
@@ -53,9 +42,9 @@ class OfferDtoModel extends Offer {
       map['checkInDate'] as String,
       map['checkOutDate'] as String,
       map['rateCode'] as String,
-      map['rateType'] as String,
+      map['rateType'] = "u",
       RoomDtoModel.fromMap(map['room'] as Map<String, dynamic>),
-      map['adults'] as int,
+      map['guests']['adults'] as int,
       PriceDtoModel.fromMap(map['price'] as Map<String, dynamic>),
       PoliciesDtoModel.fromMap(map['policies'] as Map<String, dynamic>),
     );
@@ -63,39 +52,6 @@ class OfferDtoModel extends Offer {
 
   String toJson() => json.encode(toMap());
 
-  factory OfferDtoModel.fromJson(String source) =>
-      OfferDtoModel.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() {
-    return 'OfferDtoModel(id: $id, checkInDate: $checkInDate, checkOutDate: $checkOutDate, rateCode: $rateCode, rateType: $rateType, room: $room, adults: $adults, price: $price, policies: $policies)';
-  }
-
-  @override
-  bool operator ==(covariant OfferDtoModel other) {
-    if (identical(this, other)) return true;
-
-    return other.id == id &&
-        other.checkInDate == checkInDate &&
-        other.checkOutDate == checkOutDate &&
-        other.rateCode == rateCode &&
-        other.rateType == rateType &&
-        other.room == room &&
-        other.adults == adults &&
-        other.price == price &&
-        other.policies == policies;
-  }
-
-  @override
-  int get hashCode {
-    return id.hashCode ^
-        checkInDate.hashCode ^
-        checkOutDate.hashCode ^
-        rateCode.hashCode ^
-        rateType.hashCode ^
-        room.hashCode ^
-        adults.hashCode ^
-        price.hashCode ^
-        policies.hashCode;
-  }
+  factory OfferDtoModel.fromJson(source) =>
+      OfferDtoModel.fromMap(source as Map<String, dynamic>);
 }

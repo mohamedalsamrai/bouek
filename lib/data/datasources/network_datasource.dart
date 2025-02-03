@@ -1,4 +1,5 @@
 import 'package:bouek/app/services/api_sevices.dart';
+import 'package:bouek/data/models/offer_dto_model.dart';
 import 'package:bouek/data/models/seniments_dto_model.dart';
 import 'package:bouek/domain/models/hotel_model.dart';
 import 'package:bouek/domain/models/offer_model.dart';
@@ -37,9 +38,14 @@ class NetworkDatasourceImpl extends NetworkDatasource {
   }
 
   @override
-  Future<List<Offer>> getOffersByHotelID(String hotelID) {
-    // TODO: implement getOffersByHotelID
-    throw UnimplementedError();
+  Future<List<Offer>> getOffersByHotelID(String hotelID) async {
+    final Response response = await api.getOffersByHotelID(hotelID);
+    final data = response.data["data"][0]["offers"] as List;
+    return data
+        .map(
+          (e) => OfferDtoModel.fromJson(e).toDomainModel(),
+        )
+        .toList();
   }
 
   @override

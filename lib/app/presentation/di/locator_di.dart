@@ -4,10 +4,13 @@ import 'package:bouek/app/services/api_sevices.dart';
 import 'package:bouek/app/services/auth_services.dart';
 import 'package:bouek/data/datasources/network_datasource.dart';
 import 'package:bouek/data/repositories/auth_repository_impl.dart';
+import 'package:bouek/data/repositories/offer_repository_impl.dart';
 import 'package:bouek/data/repositories/sentiments_repository_impl.dart';
 import 'package:bouek/domain/repositories/auth_repository.dart';
+import 'package:bouek/domain/repositories/offer_repository.dart';
 import 'package:bouek/domain/repositories/sentiments_repository.dart';
 import 'package:bouek/domain/usecases/check_email_verification.dart';
+import 'package:bouek/domain/usecases/get_offers_by_hotel_id_usecase.dart';
 import 'package:bouek/domain/usecases/get_sentiments.dart';
 import 'package:bouek/domain/usecases/login_usecase.dart';
 import 'package:bouek/domain/usecases/register_user.dart';
@@ -24,6 +27,12 @@ Future<void> inite() async {
         registerUser: s1(),
         sendEmailVerification: s1(),
         checkEmailVerification: s1()),
+  );
+  s1.registerLazySingleton(
+    () => GetOffersByHotelIdUsecase(s1()),
+  );
+  s1.registerLazySingleton<OfferRepository>(
+    () => OfferRepositoryImpl(s1()),
   );
   s1.registerLazySingleton<RegisterUser>(
     () => RegisterUser(s1()),
