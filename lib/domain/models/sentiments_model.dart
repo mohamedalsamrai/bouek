@@ -4,7 +4,6 @@ class Sentiments {
   final int service;
   final int roomComforts;
   final int sleepQuality;
-  final int swimmingPool;
   final int valueForMoney;
   final int facilities;
   final int catering;
@@ -16,7 +15,6 @@ class Sentiments {
     this.service,
     this.roomComforts,
     this.sleepQuality,
-    this.swimmingPool,
     this.valueForMoney,
     this.facilities,
     this.catering,

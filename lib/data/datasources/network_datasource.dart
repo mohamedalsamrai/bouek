@@ -1,9 +1,14 @@
+import 'package:bouek/app/presentation/di/locator_di.dart';
 import 'package:bouek/app/services/api_sevices.dart';
+import 'package:bouek/app/utils/methods.dart';
+import 'package:bouek/data/models/hotel_dto_model.dart';
 import 'package:bouek/data/models/offer_dto_model.dart';
 import 'package:bouek/data/models/seniments_dto_model.dart';
 import 'package:bouek/domain/models/hotel_model.dart';
 import 'package:bouek/domain/models/offer_model.dart';
 import 'package:bouek/domain/models/sentiments_model.dart';
+import 'package:bouek/domain/usecases/get_offers_by_hotel_id_usecase.dart';
+import 'package:bouek/domain/usecases/get_sentiments.dart';
 import 'package:dio/dio.dart';
 
 abstract class NetworkDatasource {
@@ -20,9 +25,9 @@ class NetworkDatasourceImpl extends NetworkDatasource {
   final ApiSevices api;
   NetworkDatasourceImpl(this.api);
   @override
-  Future<Hotel> getHotelByHotelId(String hotelId) {
-    // TODO: implement getHotelByHotelId
-    throw UnimplementedError();
+  Future<Hotel> getHotelByHotelId(String hotelId) async {
+    final data = await getHotelMap(hotelId);
+    return HotelDtoModel.fromMap(data).toDomainModel();
   }
 
   @override

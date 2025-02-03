@@ -9,7 +9,6 @@ class SenimentsDtoModel extends Sentiments {
       super.service,
       super.roomComforts,
       super.sleepQuality,
-      super.swimmingPool,
       super.valueForMoney,
       super.facilities,
       super.catering,
@@ -21,7 +20,6 @@ class SenimentsDtoModel extends Sentiments {
       super.service,
       super.roomComforts,
       super.sleepQuality,
-      super.swimmingPool,
       super.valueForMoney,
       super.facilities,
       super.catering,
@@ -36,7 +34,6 @@ class SenimentsDtoModel extends Sentiments {
       'service': service,
       'roomComforts': roomComforts,
       'sleepQuality': sleepQuality,
-      'swimmingPool': swimmingPool,
       'valueForMoney': valueForMoney,
       'facilities': facilities,
       'catering': catering,
@@ -52,7 +49,6 @@ class SenimentsDtoModel extends Sentiments {
       data['service'] as int,
       data['roomComforts'] as int,
       data['sleepQuality'] as int,
-      data['swimmingPool'] as int,
       data['valueForMoney'] as int,
       data['facilities'] as int,
       data['catering'] as int,
@@ -67,6 +63,6 @@ class SenimentsDtoModel extends Sentiments {
 
   @override
   String toString() {
-    return 'SenimentsDtoModel(staff: $staff, location: $location, service: $service, roomComforts: $roomComforts, sleepQuality: $sleepQuality, swimmingPool: $swimmingPool, valueForMoney: $valueForMoney, facilities: $facilities, catering: $catering, pointsOfInterest: $pointsOfInterest)';
+    return 'SenimentsDtoModel(staff: $staff, location: $location, service: $service, roomComforts: $roomComforts, sleepQuality: $sleepQuality, valueForMoney: $valueForMoney, facilities: $facilities, catering: $catering, pointsOfInterest: $pointsOfInterest)';
   }
 }

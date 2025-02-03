@@ -1,5 +1,8 @@
+import 'package:bouek/app/presentation/di/locator_di.dart';
 import 'package:bouek/app/presentation/widgets/customAppBar.dart';
 import 'package:bouek/app/utils/constants/colors.dart';
+import 'package:bouek/domain/repositories/hotel_repository.dart';
+import 'package:bouek/domain/usecases/get_hotel_by_hotel_id_usecase.dart';
 import 'package:flutter/material.dart';
 import '../widgets/hotel_card.dart';
 
