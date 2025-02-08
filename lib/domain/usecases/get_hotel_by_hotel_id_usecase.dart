@@ -7,6 +7,6 @@ class GetHotelByHotelIdUsecase {
   GetHotelByHotelIdUsecase(this._hotelRepository);
 
   Future<Hotel> call(String hotelId) async {
-    return _hotelRepository.getHotelByHotelId(hotelId: hotelId);
+    return _hotelRepository.getHotelByHotelId(hotelId);
   }
 }

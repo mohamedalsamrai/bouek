@@ -7,6 +7,6 @@ class GetSentimentsByHotelIdUsecase {
   GetSentimentsByHotelIdUsecase(this._sentimentsRepository);
 
   Future<Sentiments> call(String hotelId) async {
-    return _sentimentsRepository.getSentimentsByHotelId(hotelId: hotelId);
+    return _sentimentsRepository.getSentimentsByHotelId(hotelId);
   }
 }

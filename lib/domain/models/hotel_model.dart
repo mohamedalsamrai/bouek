@@ -9,19 +9,15 @@ class Hotel {
   final String cityCode;
   final double latitude;
   final double longitude;
-  final double overallRating;
+  final int overallRating;
   final int numberOfReviews;
   final int numberOfRatings;
   final Sentiments sentiments; // Ratings for different categories
   final List<Offer> offers;
   final bool available;
   final String countryCode;
-  final double distanceValue;
-  final String distanceUnit;
-  final List<String> amenities;
-  final int rating;
+  final double rating;
   final String lastUpdate;
-  final String selfLink;
 
   Hotel(
     this.hotelId,
@@ -38,11 +34,7 @@ class Hotel {
     this.offers,
     this.available,
     this.countryCode,
-    this.distanceValue,
-    this.distanceUnit,
-    this.amenities,
     this.rating,
     this.lastUpdate,
-    this.selfLink,
   );
 }

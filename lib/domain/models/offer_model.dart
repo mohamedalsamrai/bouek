@@ -23,5 +23,5 @@ class Offer {
     this.adults,
     this.price,
     this.policies,
-  );
+  );       
 }

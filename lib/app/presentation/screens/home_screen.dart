@@ -1,5 +1,8 @@
+import 'package:bouek/app/presentation/di/locator_di.dart';
 import 'package:bouek/app/presentation/widgets/customAppBar.dart';
 import 'package:bouek/app/utils/constants/colors.dart';
+import 'package:bouek/domain/repositories/hotel_repository.dart';
+import 'package:bouek/domain/usecases/get_hotel_by_hotel_id_usecase.dart';
 import 'package:flutter/material.dart';
 import '../widgets/hotel_card.dart';
 
@@ -32,6 +35,7 @@ class HomeScreen extends StatelessWidget {
           trailingIcon: 'notifications',
         ),
         body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
           child: Padding(
             padding: const EdgeInsets.all(12.0),
             child: Column(
@@ -59,6 +63,8 @@ class HomeScreen extends StatelessWidget {
                           price: '200',
                           location: '4 rue de Valois',
                           rating: '4.50',
+                          image:
+                              'https://stayatthei.com/wp-content/uploads/2023/03/IMG_1351-scaled-e1686322966702.jpeg',
                         ),
                         const SizedBox(height: 20), // Space between each card
                       ],
