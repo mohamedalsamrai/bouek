@@ -8,6 +8,9 @@ class Sentiments {
   final int facilities;
   final int catering;
   final int pointsOfInterest;
+  final int overallRating;
+  final int numberOfReviews;
+  final int numberOfRatings;
 
   Sentiments(
     this.staff,
@@ -19,5 +22,8 @@ class Sentiments {
     this.facilities,
     this.catering,
     this.pointsOfInterest,
+    this.overallRating,
+    this.numberOfReviews,
+    this.numberOfRatings,
   );
 }

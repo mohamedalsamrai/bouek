@@ -63,6 +63,8 @@ class HomeScreen extends StatelessWidget {
                           price: '200',
                           location: '4 rue de Valois',
                           rating: '4.50',
+                          image:
+                              'https://stayatthei.com/wp-content/uploads/2023/03/IMG_1351-scaled-e1686322966702.jpeg',
                         ),
                         const SizedBox(height: 20), // Space between each card
                       ],

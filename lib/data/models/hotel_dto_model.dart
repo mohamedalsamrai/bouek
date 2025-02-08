@@ -73,7 +73,7 @@ class HotelDtoModel extends Hotel {
     return HotelDtoModel(
       map['hotelId'] as String,
       map['name'] as String,
-      map['imageUrl'] = '',
+      map['imageUrl'] as String,
       map['chainCode'] as String,
       map['cityCode'] as String,
       map['latitude'] as double,

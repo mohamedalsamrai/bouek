@@ -17,13 +17,14 @@ bool checkUserState() {
 }
 
 Future<Map<String, dynamic>> getHotelMap(String hotelId) async {
-  ApiSevices api=ApiSevices(api: Dio(), token: Token());
+  ApiSevices api = ApiSevices(api: Dio(), token: Token());
   final Response response1 = await api.getHotelByHotelId(hotelId);
-  final hd = response1.data["data"][0];
-  final Response response2 = await api.getSentimentsByHotelId('TELONMFS');
-  final Response response3 = await api.getOffersByHotelID('MCLONGHM');
-  final ho = response3.data['data'][0];
-  final hr = response2.data["data"][0];
+  final hd = response1.data["data"][0] as Map<String,dynamic>;
+  final Response response2 =
+      await api.getimage(hd["geoCode"]['latitude'], hd["geoCode"]['longitude']);
+  final String image = response2.data["businesses"][0]['image_url'];
+  final String address =
+      response2.data["businesses"][0]["location"]["address1"];
   final Sentiments sentiments = await s1<GetSentiments>().get('TELONMFS');
   final List<Offer> offers =
       await s1<GetOffersByHotelIdUsecase>().call('MCLONGHM');
@@ -34,15 +35,16 @@ Future<Map<String, dynamic>> getHotelMap(String hotelId) async {
     "cityCode": hd["iataCode"],
     "latitude": hd["geoCode"]['latitude'],
     'longitude': hd["geoCode"]['longitude'],
-    "overallRating": hr["overallRating"],
-    "numberOfReviews": hr["numberOfReviews"],
-    "numberOfRatings": hr['numberOfRatings'],
+    "overallRating": sentiments.overallRating,
+    "numberOfReviews": sentiments.numberOfReviews,
+    "numberOfRatings": sentiments.numberOfRatings,
     "sentiments": sentiments,
     "offers": offers,
-    "available": ho["available"],
-    "countryCode": hd["address"]["countryCode"],
-    "rating": hr["overallRating"] * 0.05,
+    "available": true,
+    "countryCode": address,
+    "rating": sentiments.overallRating * 0.05,
     "lastUpdate": hd['lastUpdate'],
+    "imageUrl": image
   };
   return data;
 }

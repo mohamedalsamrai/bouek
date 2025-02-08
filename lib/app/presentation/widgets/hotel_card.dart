@@ -8,6 +8,7 @@ Widget hotelCard({
   required String price,
   required String location,
   required String rating,
+  required String image,
 }) {
   return Container(
     decoration: BoxDecoration(
@@ -43,8 +44,8 @@ Widget hotelCard({
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  'assets/images/la-gaffe.jpg',
+                child: Image.network(
+                  image,
                   fit: BoxFit.fill,
                 ),
               ),

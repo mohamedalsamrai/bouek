@@ -48,7 +48,7 @@ class NetworkDatasourceImpl extends NetworkDatasource {
     final data = response.data["data"][0]["offers"] as List;
     return data
         .map(
-          (e) => OfferDtoModel.fromJson(e).toDomainModel(),
+          (e) => OfferDtoModel.fromMap(e).toDomainModel(),
         )
         .toList();
   }
@@ -56,6 +56,6 @@ class NetworkDatasourceImpl extends NetworkDatasource {
   @override
   Future<Sentiments> getSentimentsByHotelId(String hotelId) async {
     final Response response = await api.getSentimentsByHotelId(hotelId);
-    return SenimentsDtoModel.fromJson(response.data).toDomainModel();
+    return SenimentsDtoModel.fromMap(response.data).toDomainModel();
   }
 }

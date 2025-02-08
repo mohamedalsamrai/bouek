@@ -12,19 +12,24 @@ class SenimentsDtoModel extends Sentiments {
       super.valueForMoney,
       super.facilities,
       super.catering,
-      super.pointsOfInterest);
+      super.pointsOfInterest,
+      super.overallRating,
+      super.numberOfReviews,
+      super.numberOfRatings);
   Sentiments toDomainModel() {
     return Sentiments(
-      super.staff,
-      super.location,
-      super.service,
-      super.roomComforts,
-      super.sleepQuality,
-      super.valueForMoney,
-      super.facilities,
-      super.catering,
-      super.pointsOfInterest,
-    );
+        super.staff,
+        super.location,
+        super.service,
+        super.roomComforts,
+        super.sleepQuality,
+        super.valueForMoney,
+        super.facilities,
+        super.catering,
+        super.pointsOfInterest,
+        super.overallRating,
+        super.numberOfReviews,
+        super.numberOfRatings);
   }
 
   Map<String, dynamic> toMap() {
@@ -38,22 +43,28 @@ class SenimentsDtoModel extends Sentiments {
       'facilities': facilities,
       'catering': catering,
       'pointsOfInterest': pointsOfInterest,
+      'overallRating': overallRating,
+      'numberOfReviews': numberOfReviews,
+      'numberOfRatings': numberOfRatings
     };
   }
 
   factory SenimentsDtoModel.fromMap(Map<String, dynamic> map) {
-    final data = map["data"][0]["sentiments"];
+    final sentimentsData = map["data"][0]["sentiments"];
+
     return SenimentsDtoModel(
-      data['staff'] as int,
-      data['location'] as int,
-      data['service'] as int,
-      data['roomComforts'] as int,
-      data['sleepQuality'] as int,
-      data['valueForMoney'] as int,
-      data['facilities'] as int,
-      data['catering'] as int,
-      data['pointsOfInterest'] as int,
-    );
+        sentimentsData['staff'] as int,
+        sentimentsData['location'] as int,
+        sentimentsData['service'] as int,
+        sentimentsData['roomComforts'] as int,
+        sentimentsData['sleepQuality'] as int,
+        sentimentsData['valueForMoney'] as int,
+        sentimentsData['facilities'] as int,
+        sentimentsData['catering'] as int,
+        sentimentsData['pointsOfInterest'] as int,
+        map["data"][0]["overallRating"] as int,
+        map["data"][0]["numberOfReviews"] as int,
+        map["data"][0]["numberOfRatings"] as int);
   }
 
   String toJson() => json.encode(toMap());

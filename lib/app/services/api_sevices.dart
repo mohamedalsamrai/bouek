@@ -28,6 +28,7 @@ class Token {
 }
 
 class ApiSevices {
+  static final _image_key = dotenv.env['IMAGE_KEY'] ?? '';
   final Dio api;
   final Token token;
   static final _baseURL = dotenv.env['BASE_URL'] ?? '';
@@ -54,7 +55,8 @@ class ApiSevices {
           "Accept": "application/vnd.amadeus+json"
         }));
   }
-  Future<Response> getHotelByHotelId(String hotelId) async{
+
+  Future<Response> getHotelByHotelId(String hotelId) async {
     final _token = await token.getToken();
     return api.get('/v1/reference-data/locations/hotels/by-hotels',
         queryParameters: {"hotelIds": hotelId},
@@ -63,7 +65,8 @@ class ApiSevices {
           "Accept": "application/vnd.amadeus+json"
         }));
   }
-  Future<Response> getOffersByHotelID(String hotelID)async{
+
+  Future<Response> getOffersByHotelID(String hotelID) async {
     final _token = await token.getToken();
     return api.get('/v3/shopping/hotel-offers',
         queryParameters: {"hotelIds": hotelID},
@@ -72,7 +75,8 @@ class ApiSevices {
           "Accept": "application/vnd.amadeus+json"
         }));
   }
-  Future<Response> getSentimentsByHotelId(String hotelID)async{
+
+  Future<Response> getSentimentsByHotelId(String hotelID) async {
     final _token = await token.getToken();
     return api.get('/v2/e-reputation/hotel-sentiments',
         queryParameters: {"hotelIds": hotelID},
@@ -81,5 +85,10 @@ class ApiSevices {
           "Accept": "application/vnd.amadeus+json"
         }));
   }
-  
+
+  Future<Response> getimage(double latitude, double longitude) async {
+  return await  Dio().get(
+        'https://api.yelp.com/v3/businesses/search?latitude=$latitude&longitude=$longitude&categories=hotels&attributes=&sort_by=best_match&limit=1',
+        options: Options(headers: {"Authorization": "Bearer $_image_key"}));
+  }
 }
